@@ -36,7 +36,6 @@ class VAO:
                                               (ibo.vbo, ibo.format, *ibo.attribs)])
         return vao
 
-
     def destroy(self):
         self.vbo.destroy()
         self.program.destroy()
