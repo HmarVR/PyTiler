@@ -10,7 +10,7 @@ class Texture:
         self.textures = {}
         self.textures["background"] = self.get_texture("textures/background.png")
         self.textures["player"] = self.get_texture_array("textures/entities/player/idle/")
-        self.textures["texArr"] = self.get_texture_array("textures/tiles/grass/")
+        self.textures["grass_tileset"] = self.get_texture_array("textures/tiles/grass/")
 
     def get_depth_texture(self, size):
         depth_texture = self.ctx.depth_texture(size)

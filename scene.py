@@ -1,4 +1,5 @@
 from model import *
+from tilemap import *
 
 
 class Scene:

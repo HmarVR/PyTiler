@@ -2,6 +2,7 @@ import numpy as np
 import moderngl as mgl
 import pywavefront
 
+from abc import ABC, abstractmethod
 
 class VBO:
     def __init__(self, ctx):
@@ -12,15 +13,15 @@ class VBO:
         [vbo.destroy() for vbo in self.vbos.values()]
 
 
-class BaseVBO:
+class BaseVBO(ABC):
     def __init__(self, ctx):
         self.ctx = ctx
         self.vbo = self.get_vbo()
         self.format: str = None
         self.attribs: list = None
 
-    def get_vertex_data(self): ...
-
+    @abstractmethod
+    def get_vertex_data(self): pass
     def get_vbo(self):
         vertex_data = self.get_vertex_data()
         vbo = self.ctx.buffer(vertex_data)
@@ -28,7 +29,6 @@ class BaseVBO:
 
     def destroy(self):
         self.vbo.release()
-
     
 class CubeVBO(BaseVBO):
     def __init__(self, ctx):
